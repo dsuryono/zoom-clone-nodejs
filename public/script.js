@@ -6,7 +6,7 @@ myVideo.muted = false;
 var peer = new Peer(undefined, {
   path: '/peerjs',
   host: '/',
-  port: '3030',
+  port: '443',
 });
 
 let myVideoStream;
@@ -32,6 +32,10 @@ navigator.mediaDevices
       connectToNewUser(userId, stream);
     });
   });
+
+// socket.on('user-disconnected', (userId) => {
+//   if (peers[userId]) peers[userId].close();
+// });
 
 peer.on('open', (id) => {
   socket.emit('join-room', ROOM_ID, id);
